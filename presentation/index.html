@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Canvas API Presentation</title>
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/league.css" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Slide INTRO -->
+        <section>
+          <h1>Canvas</h1>
+        </section>
+        <!-- Slide CURRICULUM -->
+        <section>
+          <h2>curriculum</h2>
+          <ul>
+            <li class="fragment">About canvas</li>
+            <li class="fragment">Drawing shapes</li>
+            <li class="fragment">Applying styles</li>
+            <li class="fragment">Drawing text</li>
+            <li class="fragment">Simple animations</li>
+          </ul>
+        </section>
+        <!-- Slide ABOUT -->
+        <section>
+          <section>
+            <h2>Элемент &lt;canvas&gt;</h2>
+            <pre><code data-noescape>
+        &lt;canvas id="tutorial" width="150" height="150"&gt;&lt;/canvas&gt;
+            </code></pre>
+            <div class="fragment">
+              <p>The rendering context</p>
+              <pre><code data-noescape>
+        const canvas = document.getElementById("tutorial");
+        const ctx = canvas.getContext("2d");
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <pre><code data-noescape>
+        function draw() {
+          const canvas = document.getElementById("canvas");
+          const ctx = canvas.getContext("2d");
+  
+          ctx.fillStyle = "rgb(200 0 0)";
+          ctx.fillRect(10, 10, 50, 50);
+
+          ctx.fillStyle = "rgb(0 0 200 / 50%)";
+          ctx.fillRect(30, 30, 50, 50);
+        }
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-example.png" />
+          </section>
+        </section>
+        <!-- Slide DRAWING SHAPES -->
+        <section>
+          <section>
+            <h2>Drawing shapes with canvas</h2>
+            <p>Canvas grid (coordinate space)</p>
+            <img data-src="src/images/canvas-grid.png" />
+          </section>
+          <section>
+            <h3>Rectangles</h3>
+            <h4>There are three functions that draw rectangles on the canvas:</h4>
+            <ol>
+              <li>fillRect (x, y, width, height)</li>
+              <li>strokeRect (x, y, width, height)</li>
+              <li>clearRect (x, y, width, height)</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Rectangular shape example</h2>
+            <pre><code data-noescape>
+          function draw() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+    
+            ctx.fillRect(25, 25, 100, 100);
+            ctx.clearRect(45, 45, 60, 60);
+            ctx.strokeRect(50, 50, 50, 50);
+          }
+              </code></pre>
+            <img class="fragment" data-src="src/images/canvas-rect-example.png" />
+          </section>
+          <section>
+            <h2>Triangle shape example</h2>
+            <pre><code data-noescape>
+          function draw() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+    
+            ctx.beginPath();
+            ctx.moveTo(75, 50);
+            ctx.lineTo(100, 75);
+            ctx.lineTo(100, 25);
+            ctx.fill();
+          }
+              </code></pre>
+            <img class="fragment" data-src="src/images/canvas-triangle-example.png" />
+          </section>
+          <section>
+            <h3>Lines</h3>
+            <p>For drawing straight lines, use the lineTo() method.</p>
+            <p>lineTo (x, y)</p>
+          </section>
+          <section>
+            <pre><code data-noescape>
+          function draw() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+    
+            // Filled triangle
+            ctx.beginPath();
+            ctx.moveTo(25, 25);
+            ctx.lineTo(105, 25);
+            ctx.lineTo(25, 105);
+            ctx.fill();
+        
+            // Stroked triangle
+            ctx.beginPath();
+            ctx.moveTo(125, 125);
+            ctx.lineTo(125, 45);
+            ctx.lineTo(45, 125);
+            ctx.closePath();
+            ctx.stroke();
+          }
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-lines-example.png" />
+          </section>
+          <section>
+            <h3>Arcs</h3>
+            <p>To draw arcs or circles, we use the arc() or arcTo() methods.</p>
+            <ol>
+              <li>arc (x, y, radius, startAngle, endAngle, counterclockwise)</li>
+              <li>arcTo (x1, y1, x2, y2, radius)</li>
+            </ol>
+          </section>
+          <section>
+            <pre><code data-noescape>
+    function draw() {
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 3; j++) {
+          ctx.beginPath();
+          const x = 25 + j * 50; // x coordinate
+          const y = 25 + i * 50; // y coordinate
+          const radius = 20; // Arc radius
+          const startAngle = 0; // Starting point on circle
+          const endAngle = Math.PI + (Math.PI * j) / 2; // End point on circle
+          const counterclockwise = i % 2 !== 0; // clockwise or counterclockwise
+  
+          ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise);
+  
+          i > 1 ? ctx.fill() : ctx.stroke();
+        }
+      }
+    }
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-arc-example.png" />
+          </section>
+        </section>
+        <!-- Slide STYLES -->
+        <section>
+          <section>
+            <h2>Applying styles and colors</h2>
+            <p>There are two important properties we can use:</p>
+            <ul>
+              <li>fillStyle = color</li>
+              <li>strokeStyle = color</li>
+            </ul>
+            <pre class="fragment"><code data-noescape>
+              // these all set the fillStyle to 'orange'
+
+              ctx.fillStyle = "orange";
+              ctx.fillStyle = "#FFA500";
+              ctx.fillStyle = "rgb(255 165 0)";
+              ctx.fillStyle = "rgb(255 165 0 / 100%)";
+            </code></pre>
+          </section>
+          <section>
+            <h3>A fillStyle example</h3>
+            <pre><code data-noescape data-trim>
+function draw() {
+  const ctx = document.getElementById("canvas").getContext("2d");
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 6; j++) {
+      ctx.fillStyle = `rgb(${Math.floor(255 - 42.5 * i)} ${Math.floor(
+        255 - 42.5 * j,
+      )} 0)`;
+      ctx.fillRect(j * 25, i * 25, 25, 25);
+    }
+  }
+}
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-fillStyle-example.png" />
+          </section>
+          <section>
+            <h3>A strokeStyle example</h3>
+            <pre><code data-noescape data-trim>
+function draw() {
+  const ctx = document.getElementById("canvas").getContext("2d");
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 6; j++) {
+      ctx.strokeStyle = `rgb(0 ${Math.floor(255 - 42.5 * i)} ${Math.floor(
+        255 - 42.5 * j,
+      )})`;
+      ctx.beginPath();
+      ctx.arc(12.5 + j * 25, 12.5 + i * 25, 10, 0, 2 * Math.PI, true);
+      ctx.stroke();
+    }
+  }
+}
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-strokeStyle-example.png" />
+          </section>
+          <section>
+            <h3>Transparency</h3>
+            <p>
+              Because the strokeStyle and fillStyle properties accept CSS rgb color values, we can use the following
+              notation to assign a transparent color to them.
+            </p>
+            <pre><code data-noescape>
+        // Assigning transparent colors to stroke and fill style
+
+        ctx.strokeStyle = "rgb(255 0 0 / 50%)";
+        ctx.fillStyle = "rgb(255 0 0 / 50%)";
+            </code></pre>
+          </section>
+          <section>
+            <h3>An example using rgb() with alpha transparency</h3>
+            <pre><code data-noescape data-trim>
+function draw() {
+  const ctx = document.getElementById("canvas").getContext("2d");
+
+  // Draw background
+  ctx.fillStyle = "rgb(255 221 0)";
+  ctx.fillRect(0, 0, 150, 37.5);
+  ctx.fillStyle = "rgb(102 204 0)";
+  ctx.fillRect(0, 37.5, 150, 37.5);
+  ctx.fillStyle = "rgb(0 153 255)";
+  ctx.fillRect(0, 75, 150, 37.5);
+  ctx.fillStyle = "rgb(255 51 0)";
+  ctx.fillRect(0, 112.5, 150, 37.5);
+
+  // Draw semi transparent rectangles
+  for (let i = 0; i < 10; i++) {
+    ctx.fillStyle = `rgb(255 255 255 / ${(i + 1) / 10})`;
+    for (let j = 0; j < 4; j++) {
+      ctx.fillRect(5 + i * 14, 5 + j * 37.5, 14, 27.5);
+    }
+  }
+}
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-transparency-example.png" />
+          </section>
+          <section>
+            <h3>Line styles</h3>
+            <p>There are several properties to style lines:</p>
+            <ul>
+              <li class="fragment">
+                <p style="padding: 0; margin: 0">lineWidth = value</p>
+                <img style="height: 100px; margin: 0" data-src="src/images/canvas-lineWidth-example.png" />
+              </li>
+              <li class="fragment">
+                <p style="padding: 0; margin: 0">lineCap = type</p>
+                <img style="height: 100px; margin: 0" data-src="src/images/canvas-lineCap-example.png" />
+              </li>
+              <li class="fragment">
+                <p style="padding: 0; margin: 0">lineJoin = type</p>
+                <img style="height: 100px; margin: 0" data-src="src/images/canvas-lineJoin-example.png" />
+              </li>
+              <li class="fragment">and others</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Gradients</h3>
+            <p>
+              Just like any normal drawing program, we can fill and stroke shapes using linear, radial and conic
+              gradients.
+            </p>
+            <ul>
+              <li class="fragment">createLinearGradient (x1, y1, x2, y2)</li>
+              <li class="fragment">createRadialGradient (x1, y1, r1, x2, y2, r2)</li>
+              <li class="fragment">createConicGradient (angle, x, y)</li>
+            </ul>
+          </section>
+        </section>
+        <!-- Slide TEXT -->
+        <section>
+          <section>
+            <h2>Drawing text</h2>
+            <p>The canvas rendering context provides two methods to render text:</p>
+            <ul>
+              <li>fillText (text, x, y [, maxWidth])</li>
+              <li>strokeText (text, x, y [, maxWidth])</li>
+            </ul>
+          </section>
+          <section>
+            <h3>A fillText example</h3>
+            <pre><code data-noescape>
+    function draw() {
+      const ctx = document.getElementById("canvas").getContext("2d");
+      ctx.font = "48px serif";
+      ctx.fillText("Hello world", 10, 50);
+    }
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-fillText-example.png" />
+          </section>
+          <section>
+            <h3>A strokeText example</h3>
+            <pre><code data-noescape>
+    function draw() {
+      const ctx = document.getElementById("canvas").getContext("2d");
+      ctx.font = "48px serif";
+      ctx.strokeText("Hello world", 10, 50);
+    }
+            </code></pre>
+            <img class="fragment" data-src="src/images/canvas-strokeText-example.png" />
+          </section>
+          <section>
+            <h3>Styling text</h3>
+            <p>There are some more properties which let you adjust the way the text gets displayed on the canvas:</p>
+            <ul>
+              <li>font = value</li>
+              <li>textAlign = value</li>
+              <li>textBaseline = value</li>
+              <li>direction = value</li>
+            </ul>
+          </section>
+        </section>
+        <!-- Slide - ANIMATION -->
+        <section>
+          <section>
+            <h2>Basic animations</h2>
+            <p class="fragment">Basic animation steps</p>
+            <ol>
+              <li class="fragment">Clear the canvas</li>
+              <li class="fragment">Save the canvas state</li>
+              <li class="fragment">Draw animated shapes</li>
+              <li class="fragment">Restore the canvas state</li>
+            </ol>
+          </section>
+          <section>
+            <h3>Controlling an animation</h3>
+            <p>We need a way to execute our drawing functions over a period of time</p>
+            <ul>
+              <li>setInterval()</li>
+              <li>setTimeout()</li>
+              <li>requestAnimationFrame(callback)</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Example of animation</h3>
+            <pre><code style="height: 30vh;" data-noescape>
+    function init() {
+      window.requestAnimationFrame(drawSolar);
+    }
+    
+    function drawSolar() {
+      const element = document.getElementById("canvas-solar");
+      const ctx = element.getContext("2d");
+    
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.clearRect(0, 0, 300, 300); // clear canvas
+    
+      ctx.fillStyle = "rgba(0,0,0,0.4)";
+      ctx.strokeStyle = "rgba(0,153,255,0.4)";
+      ctx.save();
+      ctx.translate(150, 150);
+    
+      // Earth
+      const time = new Date();
+      ctx.rotate(
+        ((2 * Math.PI) / 60) * time.getSeconds() +
+          ((2 * Math.PI) / 60000) * time.getMilliseconds(),
+      );
+      ctx.translate(105, 0);
+      ctx.fillRect(0, -12, 50, 24); // Shadow
+      ctx.drawImage(earth, -12, -12);
+    
+      // Moon
+      ctx.save();
+      ctx.rotate(
+        ((2 * Math.PI) / 6) * time.getSeconds() +
+          ((2 * Math.PI) / 6000) * time.getMilliseconds(),
+      );
+      ctx.translate(0, 28.5);
+      ctx.drawImage(moon, -3.5, -3.5);
+      ctx.restore();
+    
+      ctx.restore();
+    
+      ctx.beginPath();
+      ctx.arc(150, 150, 105, 0, Math.PI * 2, false); // Earth orbit
+      ctx.stroke();
+    
+      ctx.drawImage(sun, 0, 0, 300, 300);
+    
+      window.requestAnimationFrame(drawSolar);
+    }
+    
+    init();
+            </code></pre>
+            <canvas id="canvas-solar" width="300" height="300"></canvas>
+          </section>
+        </section>
+        <!-- Slide - The End -->
+        <section>
+          <h2>The end</h2>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+    <script src="src/solar/solar.js"></script>
+  </body>
+</html>
