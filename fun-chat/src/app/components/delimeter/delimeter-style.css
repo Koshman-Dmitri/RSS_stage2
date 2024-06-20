@@ -1,0 +1,13 @@
+.delimeter {
+  position: relative;
+  padding-bottom: 3px;
+  width: 100%;
+  font-size: 0.8em;
+  text-align: center;
+  border-bottom: 1px dashed yellow;
+  color: yellow;
+}
+
+.delimeter:first-child {
+  margin-top: auto;
+}

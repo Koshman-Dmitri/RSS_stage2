@@ -1,0 +1,58 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 20px;
+  padding: 10px 25px;
+  max-height: 70px;
+  height: 10svh;
+  min-height: 70px;
+  border-radius: 0 0 30px 30px;
+  text-align: center;
+  text-shadow: 0 0 4px indigo;
+}
+
+.footer__link {
+  transition: all 0.3s ease;
+}
+
+.link_git::after {
+  display: block;
+  content: '';
+  margin-top: 2px;
+  width: 0;
+  height: 2px;
+  background-color: mediumpurple;
+  transition: width 0.3s ease-in-out;
+}
+
+.rs-school__wrapper {
+  width: 100px;
+  min-width: 90px;
+  height: 100%;
+}
+
+.link_rs-school {
+  display: block;
+  width: 100%;
+  height: 80%;
+  background: url('../../../../public/rs_school_logo.svg') center no-repeat;
+  transition: filter 0.3s ease-in-out;
+}
+
+.rs-school__title {
+  margin-top: 2px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .footer__link:hover::after {
+    width: 100%;
+  }
+
+  .link_rs-school:hover {
+    filter: drop-shadow(0 0 2px white);
+  }
+}

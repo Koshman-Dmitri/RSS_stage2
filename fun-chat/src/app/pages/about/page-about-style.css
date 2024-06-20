@@ -1,0 +1,63 @@
+.about {
+  padding: 30px 40px;
+  max-width: 800px;
+  width: 100%;
+  border: thick double mediumpurple;
+  border-radius: 14px;
+  color: indigo;
+  text-shadow: 0 0 4px white;
+}
+
+.about__title {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  text-shadow: 0 0 4px indigo;
+  text-decoration: underline;
+  color: white;
+}
+
+.about__description {
+  color: white;
+  text-align: center;
+}
+
+.description__accent {
+  color: mediumpurple;
+  text-shadow: none;
+}
+
+.about__button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 8px;
+  max-width: 160px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+  border-radius: 6px;
+  background-color: mediumpurple;
+  box-shadow: 1px 1px 4px black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.about__button:active {
+  transform: translateY(2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about__button:hover {
+    background-color: #fff;
+    color: mediumpurple;
+  }
+}
+
+@media (max-width: 679px) {
+  .about__button {
+    max-width: 100px;
+  }
+}

@@ -1,0 +1,48 @@
+.chat__users {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 5px;
+  width: 35%;
+  height: 100%;
+  border-right: 2px solid white;
+  border-radius: 3%;
+}
+
+.chat__filter {
+  margin: 0 auto;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  width: 96%;
+  font-size: 0.9rem;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: indigo;
+  outline: none;
+}
+
+.chat__filter:focus {
+  border: 2px solid mediumpurple;
+}
+
+.chat__filter::placeholder {
+  font-size: 0.9em;
+}
+
+.users__list {
+  padding-left: 8px;
+  height: 100%;
+  list-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 679px) {
+  .chat__users {
+    padding: 10px 0;
+  }
+
+  .users__list {
+    padding-left: 0;
+  }
+}
