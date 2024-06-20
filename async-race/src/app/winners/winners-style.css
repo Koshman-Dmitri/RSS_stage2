@@ -1,0 +1,51 @@
+.winners__wrapper {
+  padding: 20px;
+}
+
+.winners-count {
+  margin: 30px 0 10px;
+  color: white;
+  text-shadow: 0 0 4px black;
+}
+
+.winners-page {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  padding: 6px 4px;
+  line-height: 21px;
+  text-align: center;
+  color: white;
+}
+
+.row_header {
+  background-color: cadetblue;
+}
+
+.row_header .col-4,
+.row_header .col-5 {
+  cursor: pointer;
+  user-select: none;
+}
+
+.row_header .active_asc::after {
+  content: ' ⬆';
+}
+
+.row_header .active_desc::after {
+  content: ' ⬇';
+}
+
+.winners-list .row:last-child {
+  margin-bottom: 30px;
+}
+
+.empty-table {
+  padding: 10px 20px;
+  color: azure;
+}

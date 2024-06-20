@@ -1,0 +1,53 @@
+.garage__wrapper {
+  position: relative;
+  padding: 20px;
+}
+
+.garage {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.garage-count {
+  margin: 30px 0 10px;
+  color: white;
+  text-shadow: 0 0 4px black;
+}
+
+.garage-page {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.message {
+  position: sticky;
+  bottom: 60px;
+  left: calc(50vw - 300px);
+  z-index: 999;
+  max-width: 600px;
+  border: 2px solid crimson;
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  background-color: tomato;
+  text-shadow: 0 0 10px black;
+}
+
+.race-result {
+  position: sticky;
+  bottom: 50vh;
+  left: calc(50vw - 150px);
+  z-index: 1000;
+  max-width: 300px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 44px;
+  color: goldenrod;
+  background-color: brown;
+  text-shadow: 0 0 10px yellow;
+}

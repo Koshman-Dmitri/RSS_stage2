@@ -1,0 +1,38 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.button {
+  display: block;
+  padding: 5px 10px;
+  max-width: 120px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: springgreen;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 1px 1px 2px black;
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: 1px -1px 2px black;
+  transform: translateY(2px);
+}
+
+.button:disabled {
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background-color: gold;
+  }
+}

@@ -1,0 +1,6 @@
+.button.button_prev,
+.button.button_next {
+  display: inline-block;
+  margin-right: 4px;
+  max-width: 70px;
+}

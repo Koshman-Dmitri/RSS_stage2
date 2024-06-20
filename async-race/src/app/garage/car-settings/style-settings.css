@@ -1,0 +1,39 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 380px;
+}
+
+.create-area,
+.update-area {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-text {
+  padding: 2px 8px;
+  font-size: 20px;
+  max-width: 200px;
+  width: 100%;
+  color: #fff;
+  background-color: darkcyan;
+  outline-color: gold;
+}
+
+.input-text:disabled .input-color:disabled {
+  filter: grayscale(1);
+}
+
+.input-color {
+  min-width: 50px;
+}
+
+.control-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
