@@ -1,0 +1,92 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+
+.result-page {
+  padding: 30px 40px;
+  max-width: 70%;
+  width: 100%;
+  background-color: burlywood;
+  border: thick double teal;
+  border-radius: 14px;
+}
+
+.result__image {
+  display: block;
+  margin: 0 auto;
+  max-width: 30%;
+  border-radius: 10px;
+  box-shadow: 0 0 6px teal;
+}
+
+.result__image-desc {
+  margin: 16px 0 24px;
+  text-align: center;
+}
+
+.result__title {
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.result__num {
+  display: inline-block;
+  margin-left: 10px;
+  max-width: 24px;
+  width: 100%;
+  text-align: center;
+  border-radius: 42%;
+  color: white;
+}
+
+.result__title.known .result__num {
+  background-color: seagreen;
+}
+
+.result__title.unknown .result__num {
+  background-color: crimson;
+}
+
+.result-table__wrapper {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.result__known,
+.result__unknown {
+  margin-bottom: 16px;
+  padding-left: 14px;
+  list-style: none;
+}
+
+.result__known li,
+.result__unknown li {
+  margin: 5px 0;
+}
+
+.audio-url {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.result-page__button {
+  display: block;
+  margin: 30px auto 0;
+  border: 1px solid white;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .result-page__button:hover {
+    border-color: whitesmoke;
+    background-color: teal;
+  }
+}

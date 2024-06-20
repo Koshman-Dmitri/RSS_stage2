@@ -1,0 +1,602 @@
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  user-select: none;
+}
+
+.header.disabled {
+  pointer-events: none;
+}
+
+.settings {
+  display: flex;
+  gap: 30px;
+}
+
+.settings__label {
+  margin-right: 10px;
+  color: beige;
+}
+
+.settings__selector {
+  width: 60px;
+  height: 24px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: outline 0.2s ease-in;
+}
+
+.passed {
+  background-color: aquamarine;
+}
+
+/* HINTS */
+
+.hints {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  display: block;
+  padding: 10px;
+  max-width: 120px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease;
+}
+
+.button_hint-translate {
+  background: url('../../../assets/icons/text.svg') center no-repeat;
+}
+
+.button_hint-audio {
+  background: url('../../../assets/icons/audio.svg') center no-repeat;
+}
+
+.button_hint-picture {
+  background: url('./../../../assets/icons/img.svg') center no-repeat;
+}
+
+.button.button_hint.active {
+  background-color: coral;
+}
+
+.button.button_hint {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+}
+
+.audio-hint {
+  margin: 10px auto;
+  width: 40px;
+  height: 40px;
+  background: url('../../../assets/icons/sound-on.svg') center no-repeat;
+  filter: drop-shadow(0 0 12px white);
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease-in,
+    filter 0.3s ease-in,
+    visibility 0.3s ease-in;
+}
+
+.audio-hint.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.audio-hint.active {
+  filter: drop-shadow(0 0 12px coral);
+  animation: play 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes play {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.translate-hint {
+  margin-bottom: 20px;
+  max-width: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 20px whitesmoke;
+  transition: max-width 0.5s ease-in-out;
+  overflow: hidden;
+  user-select: none;
+}
+
+.translate-hint.active {
+  max-width: 100%;
+}
+
+/* PUZZLE */
+
+.main {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.puzzle__wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 728px;
+  user-select: none;
+}
+
+.rounds {
+  display: flex;
+  flex-direction: column;
+  max-width: 5%;
+}
+
+.game__round {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.game__round span {
+  display: block;
+  padding: 4px;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: white;
+  box-shadow: 1px 1px 4px black;
+}
+
+.puzzle {
+  position: relative;
+  max-width: 90%;
+  width: 100%;
+  background-color: steelblue;
+}
+
+.puzzle.disabled {
+  pointer-events: none;
+}
+
+.level-pic {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.level-pic.visible {
+  animation: revialImg 3s forwards 1;
+}
+
+.level-board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  opacity: 1;
+}
+
+.level-board.hidden {
+  animation: hideGame 2.5s forwards 1;
+}
+
+@keyframes revialImg {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hideGame {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.board__row {
+  display: flex;
+}
+
+.board__row.disabled {
+  pointer-events: none;
+}
+
+.row__cell {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 5px;
+  border: 1px solid white;
+  color: white;
+  text-shadow: 0 0 3px red;
+  background-image: linear-gradient(
+      rgba(155, 155, 155, 0.5),
+      rgba(30, 30, 30, 0.6)
+    ),
+    var(--img-path);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  user-select: none;
+}
+
+.row__cell.withoutHint {
+  background: gray;
+}
+
+.row__cell.right {
+  outline: 2px solid green;
+  outline-offset: -2px;
+}
+
+.row__cell.wrong {
+  outline: 2px solid red;
+  outline-offset: -2px;
+}
+
+.row__cell.hovered {
+  outline: 2px solid gold;
+  outline-offset: -2px;
+}
+
+.row__cell.touched {
+  transition-duration: 0ms;
+}
+
+.row__cell[draggable='true'] {
+  touch-action: none;
+}
+
+.row__cell_empty {
+  flex-grow: 1;
+  min-height: inherit;
+  border: 8px solid transparent;
+  border-radius: 26px;
+  background-color: indianred;
+  background-clip: padding-box;
+  user-select: none;
+}
+
+.row__cell_empty.hovered {
+  background-color: gold;
+}
+
+.level-source {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  padding: 5px;
+  max-width: 680px;
+  width: 100%;
+  min-height: 53px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px black;
+  text-align: center;
+  background-color: steelblue;
+  user-select: none;
+}
+
+.level-source.disabled {
+  pointer-events: none;
+}
+
+.picture {
+  color: whitesmoke;
+  animation: revialImg 3s forwards 1;
+}
+
+/* FOOTER BUTTONS */
+
+.buttons-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.button.button_footer {
+  display: none;
+  border: 1px solid white;
+}
+
+.button.button_footer.visible {
+  display: block;
+}
+
+.button.button_logout {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  background-color: brown;
+}
+
+.button.button_logout::after {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  display: none;
+  content: 'Your data will be erased';
+  max-width: 100px;
+  font-size: 14px;
+  color: black;
+  border: 1px solid black;
+  background-color: wheat;
+}
+
+.button.button_result {
+  background-color: teal;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .settings__selector:hover {
+    outline: 2px solid coral;
+  }
+
+  .button_hint:hover {
+    background-color: seagreen;
+  }
+
+  .button.active:hover {
+    background-color: crimson;
+  }
+
+  .button_footer:hover {
+    border-color: whitesmoke;
+    background-color: rgba(106, 90, 205, 0.4);
+  }
+
+  .button_logout:hover::after {
+    display: block;
+  }
+
+  .row__cell:hover {
+    outline: 2px solid goldenrod;
+    outline-offset: -2px;
+  }
+}
+
+/* DESIGN PUZZLE PIECES */
+
+:root {
+  --path-offset: 20px;
+  --img-path: '';
+}
+
+.row__cell.first {
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    calc(var(--path-offset)) 100%,
+    calc(var(--path-offset)) 70%,
+    calc(var(--path-offset) + 3.123px) 69%,
+    calc(var(--path-offset) + 4.36px) 68%,
+    calc(var(--path-offset) + 5.25px) 67%,
+    calc(var(--path-offset) + 6px) 66%,
+    calc(var(--path-offset) + 6.614px) 65%,
+    calc(var(--path-offset) + 7.14px) 64%,
+    calc(var(--path-offset) + 7.6px) 63%,
+    calc(var(--path-offset) + 8px) 62%,
+    calc(var(--path-offset) + 8.35px) 61%,
+    calc(var(--path-offset) + 8.66px) 60%,
+    calc(var(--path-offset) + 8.93px) 59%,
+    calc(var(--path-offset) + 9.165px) 58%,
+    calc(var(--path-offset) + 9.367px) 57%,
+    calc(var(--path-offset) + 9.54px) 56%,
+    calc(var(--path-offset) + 9.682px) 55%,
+    calc(var(--path-offset) + 9.78px) 54%,
+    calc(var(--path-offset) + 9.886px) 53%,
+    calc(var(--path-offset) + 9.95px) 52%,
+    calc(var(--path-offset) + 9.9875px) 51%,
+    calc(var(--path-offset) + 10px) 50%,
+    calc(var(--path-offset) + 9.9875px) 49%,
+    calc(var(--path-offset) + 9.95px) 48%,
+    calc(var(--path-offset) + 9.886px) 47%,
+    calc(var(--path-offset) + 9.78px) 46%,
+    calc(var(--path-offset) + 9.682px) 45%,
+    calc(var(--path-offset) + 9.54px) 44%,
+    calc(var(--path-offset) + 9.367px) 43%,
+    calc(var(--path-offset) + 9.165px) 42%,
+    calc(var(--path-offset) + 8.93px) 41%,
+    calc(var(--path-offset) + 8.66px) 40%,
+    calc(var(--path-offset) + 8.35px) 39%,
+    calc(var(--path-offset) + 8px) 38%,
+    calc(var(--path-offset) + 7.6px) 37%,
+    calc(var(--path-offset) + 7.14px) 36%,
+    calc(var(--path-offset) + 6.614px) 35%,
+    calc(var(--path-offset) + 6px) 34%,
+    calc(var(--path-offset) + 5.25px) 33%,
+    calc(var(--path-offset) + 4.36px) 32%,
+    calc(var(--path-offset) + 3.123px) 31%,
+    calc(var(--path-offset)) 30%,
+    calc(var(--path-offset)) 0%
+  );
+}
+
+.row__cell.center {
+  clip-path: polygon(
+    0% 0%,
+    0% 30%,
+    3.123px 31%,
+    4.36px 32%,
+    5.25px 33%,
+    6px 34%,
+    6.614px 35%,
+    7.14px 36%,
+    7.6px 37%,
+    8px 38%,
+    8.35px 39%,
+    8.66px 40%,
+    8.93px 41%,
+    9.165px 42%,
+    9.367px 43%,
+    9.54px 44%,
+    9.682px 45%,
+    9.78px 46%,
+    9.886px 47%,
+    9.95px 48%,
+    9.9875px 49%,
+    10px 50%,
+    9.9875px 51%,
+    9.95px 52%,
+    9.886px 53%,
+    9.78px 54%,
+    9.682px 55%,
+    9.54px 56%,
+    9.367px 57%,
+    9.165px 58%,
+    8.93px 59%,
+    8.66px 60%,
+    8.35px 61%,
+    8px 62%,
+    7.6px 63%,
+    7.14px 64%,
+    6.614px 65%,
+    6px 66%,
+    5.25px 67%,
+    4.36px 68%,
+    3.123px 69%,
+    0% 70%,
+    0% 100%,
+    calc(var(--path-offset)) 100%,
+    calc(var(--path-offset)) 70%,
+    calc(var(--path-offset) + 3.123px) 69%,
+    calc(var(--path-offset) + 4.36px) 68%,
+    calc(var(--path-offset) + 5.25px) 67%,
+    calc(var(--path-offset) + 6px) 66%,
+    calc(var(--path-offset) + 6.614px) 65%,
+    calc(var(--path-offset) + 7.14px) 64%,
+    calc(var(--path-offset) + 7.6px) 63%,
+    calc(var(--path-offset) + 8px) 62%,
+    calc(var(--path-offset) + 8.35px) 61%,
+    calc(var(--path-offset) + 8.66px) 60%,
+    calc(var(--path-offset) + 8.93px) 59%,
+    calc(var(--path-offset) + 9.165px) 58%,
+    calc(var(--path-offset) + 9.367px) 57%,
+    calc(var(--path-offset) + 9.54px) 56%,
+    calc(var(--path-offset) + 9.682px) 55%,
+    calc(var(--path-offset) + 9.78px) 54%,
+    calc(var(--path-offset) + 9.886px) 53%,
+    calc(var(--path-offset) + 9.95px) 52%,
+    calc(var(--path-offset) + 9.9875px) 51%,
+    calc(var(--path-offset) + 10px) 50%,
+    calc(var(--path-offset) + 9.9875px) 49%,
+    calc(var(--path-offset) + 9.95px) 48%,
+    calc(var(--path-offset) + 9.886px) 47%,
+    calc(var(--path-offset) + 9.78px) 46%,
+    calc(var(--path-offset) + 9.682px) 45%,
+    calc(var(--path-offset) + 9.54px) 44%,
+    calc(var(--path-offset) + 9.367px) 43%,
+    calc(var(--path-offset) + 9.165px) 42%,
+    calc(var(--path-offset) + 8.93px) 41%,
+    calc(var(--path-offset) + 8.66px) 40%,
+    calc(var(--path-offset) + 8.35px) 39%,
+    calc(var(--path-offset) + 8px) 38%,
+    calc(var(--path-offset) + 7.6px) 37%,
+    calc(var(--path-offset) + 7.14px) 36%,
+    calc(var(--path-offset) + 6.614px) 35%,
+    calc(var(--path-offset) + 6px) 34%,
+    calc(var(--path-offset) + 5.25px) 33%,
+    calc(var(--path-offset) + 4.36px) 32%,
+    calc(var(--path-offset) + 3.123px) 31%,
+    calc(var(--path-offset)) 30%,
+    calc(var(--path-offset)) 0%
+  );
+}
+
+.row__cell.last {
+  clip-path: polygon(
+    0% 0%,
+    0% 30%,
+    3.123px 31%,
+    4.36px 32%,
+    5.25px 33%,
+    6px 34%,
+    6.614px 35%,
+    7.14px 36%,
+    7.6px 37%,
+    8px 38%,
+    8.35px 39%,
+    8.66px 40%,
+    8.93px 41%,
+    9.165px 42%,
+    9.367px 43%,
+    9.54px 44%,
+    9.682px 45%,
+    9.78px 46%,
+    9.886px 47%,
+    9.95px 48%,
+    9.9875px 49%,
+    10px 50%,
+    9.9875px 51%,
+    9.95px 52%,
+    9.886px 53%,
+    9.78px 54%,
+    9.682px 55%,
+    9.54px 56%,
+    9.367px 57%,
+    9.165px 58%,
+    8.93px 59%,
+    8.66px 60%,
+    8.35px 61%,
+    8px 62%,
+    7.6px 63%,
+    7.14px 64%,
+    6.614px 65%,
+    6px 66%,
+    5.25px 67%,
+    4.36px 68%,
+    3.123px 69%,
+    0% 70%,
+    0% 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+.row__cell.center,
+.row__cell.last {
+  margin-left: -6px;
+}

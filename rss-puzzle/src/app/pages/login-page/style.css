@@ -1,0 +1,118 @@
+.login__form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 32px;
+  max-width: 400px;
+  width: 100%;
+  border: thick double seashell;
+  border-radius: 14px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.start-page.visible .login__form {
+  animation: hideLogin 0.5s 1;
+  animation-fill-mode: forwards;
+}
+
+.start-page.visible.no-login .login__form {
+  opacity: 0;
+}
+
+@keyframes hideLogin {
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.label {
+  display: inline-block;
+  max-width: 104px;
+  width: 100%;
+  font-size: 20px;
+  color: white;
+}
+
+.form__input {
+  margin-bottom: 20px;
+  padding: 4px 10px;
+  max-width: 66%;
+  font-size: 20px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form__input.error:invalid {
+  border: 1px solid red;
+  animation: invalidInput 0.4s 1;
+  animation-fill-mode: backwards;
+}
+
+.form__input.error:valid {
+  border: 1px solid transparent;
+}
+
+@keyframes invalidInput {
+  0% {
+    transform: translateX(0px);
+  }
+  20% {
+    transform: translateX(2px);
+  }
+  40% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.error-message {
+  font-size: 16px;
+  color: red;
+  letter-spacing: 0.6px;
+  transform: translateY(-14px);
+}
+
+.button {
+  display: block;
+  padding: 10px;
+  max-width: 120px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease;
+}
+
+.button_login {
+  margin: 20px auto 0;
+  border: 1px solid white;
+}
+
+.button_login:disabled {
+  pointer-events: none;
+  filter: grayscale(1);
+}
+
+.button_login:hover {
+  border-color: whitesmoke;
+  background-color: rgba(106, 90, 205, 0.4);
+}

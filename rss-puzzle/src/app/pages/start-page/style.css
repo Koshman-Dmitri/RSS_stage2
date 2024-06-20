@@ -1,0 +1,77 @@
+.start-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: linear-gradient(90deg, #25262b, #37407d, #25262b);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s ease-out;
+}
+
+.start-page.invisible {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.start-page__wrapper {
+  position: relative;
+  padding: 40px;
+  max-width: 640px;
+  text-align: center;
+  border: thick double seashell;
+  border-radius: 14px;
+  opacity: 0;
+  background: url('../../../assets/images/start-bg.jpg') center no-repeat;
+  background-size: 122%;
+  background-position: -110px;
+}
+
+.start-page.visible .start-page__wrapper {
+  animation: showStart 2s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes showStart {
+  100% {
+    opacity: 1;
+  }
+}
+
+.app__title {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 52px;
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
+.app__subtitle {
+  margin-bottom: 20px;
+  font-size: 30px;
+  text-shadow: 0 0 10px black;
+}
+
+.app__description {
+  font-size: 20px;
+  text-shadow: 0 0 10px black;
+}
+
+.button_start {
+  margin: 80px auto 0;
+  border: 1px solid white;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button_start:hover {
+    border-color: whitesmoke;
+    background-color: rgba(106, 90, 205, 0.4);
+  }
+}
