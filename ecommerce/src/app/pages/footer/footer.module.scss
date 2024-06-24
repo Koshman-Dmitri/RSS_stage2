@@ -1,0 +1,19 @@
+@import '/src/styles/global';
+
+.footer {
+  min-height: 80px;
+  padding-top: 20px;
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  .text {
+    padding-top: 10px;
+    padding-left: 10px;
+    border-top: 1px solid var(--base-color);
+  }
+
+  @media (width <= $small-width) {
+    padding: 20px 0;
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,265 @@
+@import '/src/styles/global';
+
+.cartPage {
+  align-self: flex-start;
+  width: 100%;
+  padding-bottom: 40px;
+  font-size: 1.8rem;
+
+  @media (width <= $profile-medium-width) {
+    font-size: 1.5rem;
+  }
+}
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-bottom: 14px;
+  padding: 0 14px;
+
+  font-size: 1.2rem;
+
+  border-radius: 10px;
+  box-shadow: 0 0 8px var(--secondary-color);
+
+  &.dummy {
+    border: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: $large-width) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: $medium-width) {
+    padding: 0 10px;
+    font-size: 0.8rem;
+  }
+}
+
+.cartFooter {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+
+  .cart:has(.cartItem:not(.cartItem.dummy)) ~ & {
+    display: block;
+  }
+
+  @media (max-width: $medium-width) {
+    padding: 0;
+  }
+}
+
+.promocodeWrapper {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.promocodeLabel {
+  width: 100%;
+  max-width: 400px;
+  font-size: 1.2rem;
+
+  .promocodeWrapper.active & {
+    cursor: default;
+  }
+
+  @media (max-width: $medium-width) {
+    width: 60%;
+    font-size: 0.8rem;
+  }
+}
+
+.promocode {
+  margin-top: 3px;
+  font-size: 1rem;
+  text-transform: uppercase;
+
+  &::placeholder {
+    font-size: 0.9em;
+    text-transform: initial;
+    letter-spacing: initial;
+  }
+
+  .promocodeWrapper.active & {
+    display: none;
+  }
+
+  @media (max-width: $medium-width) {
+    font-size: 0.8rem;
+  }
+}
+
+.promocodeButton {
+  max-width: 200px;
+  height: 54px;
+  font-size: 1rem;
+
+  &:disabled {
+    background-color: gray;
+  }
+
+  .promocodeWrapper.active & {
+    display: none;
+  }
+
+  @media (max-width: $medium-width) {
+    width: 40%;
+    height: 49px;
+    font-size: 0.65rem;
+  }
+}
+
+.promocodeText {
+  display: none;
+
+  width: 100%;
+  max-width: 400px;
+  padding: 9.5px;
+
+  font-size: 1.2rem;
+  text-transform: uppercase;
+
+  background-color: var(--active-promo-bg-color);
+  border-radius: 8px;
+
+  .promocodeWrapper.active & {
+    display: block;
+  }
+
+  @media (max-width: $medium-width) {
+    padding: 12px;
+    font-size: 0.8rem;
+  }
+}
+
+.promocodeRemoveButton {
+  display: none;
+  max-width: 200px;
+  height: 54px;
+  font-size: 1rem;
+
+  .promocodeWrapper.active & {
+    display: block;
+  }
+
+  @media (max-width: $medium-width) {
+    width: 40%;
+    height: 49px;
+    font-size: 0.65rem;
+  }
+}
+
+.cartTotalWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+
+  background-color: var(--secondary-background-color);
+
+  @media (max-width: $medium-width) {
+    height: 80px;
+    font-size: 1rem;
+  }
+}
+
+.subtotalText {
+  text-align: right;
+}
+
+.cartSubtotalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1.3;
+}
+
+.cartTotalPromo {
+  display: none;
+  color: var(--promo-price-color);
+}
+
+.promo {
+  .cartTotalOrigin {
+    font-size: 1.2rem;
+    color: var(--no-promo-price-color);
+    text-decoration: line-through;
+
+    @media (max-width: $medium-width) {
+      font-size: 0.8rem;
+    }
+  }
+
+  .cartTotalPromo {
+    display: block;
+  }
+}
+
+.clearCartBtn {
+  max-width: 300px;
+  margin: 20px auto 0;
+  font-size: 1rem;
+
+  @media (max-width: $medium-width) {
+    max-width: 200px;
+    font-size: 0.65rem;
+  }
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .cart:has(.cartItem) ~ & {
+    display: none;
+  }
+}
+
+.emptyText {
+  font-size: 1.2rem;
+
+  @media (max-width: $medium-width) {
+    font-size: 1rem;
+  }
+}
+
+.emptyLink {
+  cursor: pointer;
+
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-style: normal;
+  color: var(--form-link-color);
+  text-decoration: underline;
+
+  transition: color 0.2s ease-in;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--form-link-color-hover);
+    }
+  }
+}
+
+.emptyImage {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: cover;
+}

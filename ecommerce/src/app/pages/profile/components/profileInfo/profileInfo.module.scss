@@ -1,0 +1,188 @@
+@import '/src/styles/global';
+
+$table-border-color: #ddd;
+$table-header-color: #efefef;
+
+.profileWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: space-between;
+
+  width: 100%;
+  margin: 0 auto;
+
+  .userInfoForm {
+    flex-shrink: 2;
+
+    width: 100%;
+    min-width: 335px;
+    max-width: 360px;
+    padding: 10px;
+    padding-top: 20px;
+
+    text-align: center;
+
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
+
+    @media (width <= $profile-medium-width) {
+      max-width: 400px;
+    }
+  }
+
+  @media (width <= $large-width) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 30px;
+
+  & button {
+    margin: 0;
+    transition:
+      opacity 0.2s ease-in,
+      transform 0.1s ease-in;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .startEditBtn {
+    display: block;
+    max-width: 120px;
+    background-color: var(--base-color);
+
+    .edit ~ & {
+      display: none;
+    }
+  }
+
+  .passwordEditBtn {
+    display: none;
+    max-width: 220px;
+    background-color: var(--button-do-color);
+
+    .edit ~ & {
+      display: block;
+    }
+  }
+
+  .saveCancelWrapper {
+    display: flex;
+    gap: 20px;
+
+    .cancelEditBtn {
+      display: none;
+      max-width: 120px;
+      background-color: var(--button-remove-color);
+
+      .edit ~ & {
+        display: block;
+      }
+    }
+
+    .saveEditBtn {
+      display: none;
+      width: 200px;
+      background-color: var(--button-do-color);
+
+      .edit ~ & {
+        display: block;
+      }
+    }
+  }
+
+  @media (width <= $profile-medium-width) {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.userAddressForm {
+  overflow-x: auto;
+
+  width: 100%;
+  padding: 10px;
+
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+
+  .tableTitle {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.6em;
+    border: 1px solid $table-border-color;
+
+    td {
+      padding: 5px;
+      word-break: break-word;
+      border: 1px solid $table-border-color;
+    }
+
+    label {
+      max-width: 200px;
+      margin-bottom: unset;
+      font-size: 1em;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns:
+        90px 146px minmax(160px, 1fr) minmax(160px, 1fr) minmax(100px, 140px)
+        100px 80px;
+
+      @media (width <= $profile-medium-width) {
+        grid-template-columns:
+          90px 130px minmax(120px, 1fr) minmax(120px, 1fr) minmax(100px, 140px)
+          100px 80px;
+      }
+    }
+
+    .tableHeader {
+      font-size: 0.9em;
+      font-weight: bold;
+      text-align: center;
+      background: $table-header-color;
+
+      & > * {
+        padding: 5px;
+        border: 1px solid $table-border-color;
+      }
+    }
+  }
+
+  .rowAddBtn {
+    max-width: 80px;
+    margin: 10px auto 0;
+
+    font-size: 0.4em;
+
+    background-color: var(--button-do-color);
+
+    transition:
+      opacity 0.2s ease-in,
+      transform 0.1s ease-in;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+}

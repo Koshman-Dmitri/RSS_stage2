@@ -1,0 +1,28 @@
+@import '/src/styles/global';
+
+.main {
+  display: flex;
+
+  width: 100%;
+  padding-top: 20px;
+
+  text-align: center;
+
+  background-image: url('./images/mainImg.jpg');
+  background-position: center top;
+  background-size: cover;
+
+  .mainTitle {
+    margin-top: 20px;
+    padding: 0 20px;
+
+    color: var(--background-color);
+
+    background-color: rgba($color: black, $alpha: 70%);
+    border-radius: 10px;
+
+    @media (width <= $medium-width) {
+      font-size: 1.6rem;
+    }
+  }
+}

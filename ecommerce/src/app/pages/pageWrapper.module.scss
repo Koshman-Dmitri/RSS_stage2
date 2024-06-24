@@ -1,0 +1,12 @@
+.pageWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  .pageContent {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+  }
+}

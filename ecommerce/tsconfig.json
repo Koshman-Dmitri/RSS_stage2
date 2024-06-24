@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "module": "ESNext",
+    "isolatedModules": true,
+    "noEmit": true,
+    "moduleResolution": "Bundler",
+    "baseUrl": "src/app"
+  },
+  "include": ["src", "./*", ".eslintrc.cjs"]
+}

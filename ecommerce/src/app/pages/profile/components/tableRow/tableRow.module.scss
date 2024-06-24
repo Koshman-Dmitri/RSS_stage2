@@ -1,0 +1,79 @@
+@import '/src/styles/global';
+
+.formCheckbox {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--form-checkbox-color);
+}
+
+.select {
+  cursor: pointer;
+
+  display: block;
+
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  padding: 9px;
+
+  font-size: 19.44px;
+
+  border: 2px solid var(--input-border-color);
+  border-radius: 8px;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.7;
+    background-color: var(--input-disabled-color);
+  }
+
+  @media (width <= $profile-medium-width) {
+    font-size: 16px;
+  }
+}
+
+.row {
+  input {
+    margin: 0 auto;
+    padding: 4px 10px;
+  }
+
+  & td {
+    align-content: center;
+  }
+
+  & div {
+    margin: 6px 12px;
+  }
+
+  & select {
+    margin-bottom: 0;
+    padding: 4px 10px;
+  }
+
+  & span {
+    height: unset;
+    margin-top: 3px;
+  }
+
+  & input:valid + span {
+    display: none;
+  }
+
+  &.default {
+    background-color: var(--row-default-color);
+  }
+}
+
+.deleteButton {
+  max-width: 40px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0;
+
+  font-size: 0.8em;
+  line-height: 30px;
+
+  background-color: var(--button-remove-color);
+}

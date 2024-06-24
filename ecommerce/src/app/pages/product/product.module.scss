@@ -1,0 +1,169 @@
+@import '/src/styles/global';
+
+.product {
+  width: 100%;
+
+  .productDetails {
+    display: flex;
+    gap: 20px;
+    margin: 40px;
+
+    .slider {
+      position: relative;
+      display: flex;
+      max-width: 450px;
+
+      .sliderImage {
+        cursor: zoom-in;
+        width: 100%;
+        height: 100%;
+      }
+
+      .discountLabel {
+        width: 55px;
+        height: 55px;
+      }
+
+      @media (width <= $catalog-medium-width) {
+        max-width: 300px;
+      }
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+
+      .prices {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .description {
+        font-size: 0.9em;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-weight: bold;
+
+        .brandName {
+          font-weight: normal;
+        }
+      }
+
+      .colorsSelect {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-weight: bold;
+
+        .colors {
+          display: flex;
+          gap: 10px;
+
+          .color {
+            cursor: pointer;
+
+            width: 25px;
+            height: 25px;
+
+            border: 1px solid rgb(0 0 0 / 30%);
+            border-radius: 50%;
+
+            transition:
+              scale 0.2s,
+              box-shadow 0.2s;
+
+            &.active {
+              pointer-events: none;
+              cursor: default;
+              scale: 1.2;
+              box-shadow: 0 0 3px var(--base-color);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+              &:hover {
+                scale: 1.2;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (width <= $catalog-medium-width) {
+      flex-direction: column;
+    }
+  }
+
+  .sliderModal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    scale: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    backdrop-filter: blur(3px);
+
+    transition: scale 0.3s;
+
+    &.show {
+      scale: 1;
+    }
+
+    .sliderInModalWrapper {
+      position: relative;
+      width: 45%;
+      margin: 0 auto;
+
+      .closeSliderModalBtn {
+        position: absolute;
+        z-index: 1001;
+        top: 0;
+        right: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+        margin: 10px 10px 0 0;
+
+        font-size: 1.2em;
+        color: var(--discount-label-color);
+
+        background-color: transparent;
+        box-shadow: none;
+
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            opacity: 1;
+            background-color: var(--base-color);
+          }
+        }
+      }
+
+      .sliderImage {
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (width <= $huge-width) {
+        width: 65%;
+      }
+    }
+  }
+}

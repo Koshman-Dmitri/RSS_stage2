@@ -1,0 +1,23 @@
+@import '/src/styles/global';
+
+.profilePage {
+  align-self: flex-start;
+  width: 100%;
+  padding-bottom: 40px;
+  font-size: 1.8rem;
+
+  @media (width <= $profile-medium-width) {
+    font-size: 1.5rem;
+  }
+}
+
+.noUserError {
+  padding: 20px;
+  font-size: 1.5rem;
+  color: var(--text-error-color);
+  text-align: center;
+
+  @media (width <= $profile-medium-width) {
+    font-size: 1rem;
+  }
+}

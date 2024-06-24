@@ -1,0 +1,128 @@
+@import '/src/styles/global';
+
+.signupPage {
+  width: 100%;
+  padding-bottom: 40px;
+  font-size: 1.8rem;
+
+  .signupFormWrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+
+    button:last-of-type {
+      max-width: 400px;
+    }
+
+    .userWrapper {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .formText {
+      display: block;
+
+      margin-bottom: 5px;
+
+      font-size: 0.6em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .hr {
+      width: 55%;
+      height: 20px;
+      margin: 0 auto;
+
+      border-top: 2px solid var(--base-color);
+      border-radius: 50%;
+
+      @media (width <= $small-width) {
+        display: none;
+      }
+    }
+
+    .addressWrapper {
+      display: flex;
+      gap: 25px;
+      justify-content: space-between;
+
+      & > * {
+        max-width: 100%;
+        padding: 5px 10px 0;
+        border-radius: 10px;
+        box-shadow: 0 0 5px var(--base-color);
+      }
+
+      @media (width <= $small-width) {
+        flex-direction: column;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    .commonErrorText {
+      display: block;
+
+      height: 20px;
+      margin-top: 15px;
+
+      font-size: 0.4em;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text-error-color);
+      text-align: center;
+
+      visibility: hidden;
+
+      &.visible {
+        visibility: visible;
+      }
+    }
+
+    .checkboxLabel {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 10px;
+
+      font-size: 0.6em;
+      font-weight: normal;
+      color: var(--label-checkbox-inactive-color);
+
+      transition:
+        color 0.2s ease-in,
+        text-shadow 0.2s ease-in;
+
+      .addressWrapper & {
+        justify-content: flex-end;
+      }
+
+      &:has(.formCheckbox:checked) {
+        color: var(--label-checkbox-active-color);
+        text-shadow: 0 0 2px var(--form-checkbox-color);
+      }
+
+      .formCheckbox {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        accent-color: var(--form-checkbox-color);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: var(--label-checkbox-active-color);
+        }
+      }
+    }
+  }
+
+  @media (width <= $medium-width) {
+    font-size: 1.5rem;
+  }
+}

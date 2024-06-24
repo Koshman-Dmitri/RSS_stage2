@@ -1,0 +1,168 @@
+.formLabel {
+  position: relative;
+
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+
+  font-size: 0.6em;
+
+  *:disabled & {
+    pointer-events: none;
+  }
+
+  .noEdit & {
+    cursor: default;
+  }
+
+  .btnPassVis {
+    cursor: pointer;
+
+    position: absolute;
+    top: 56%;
+    right: 10px;
+    transform: translateY(-50%);
+
+    width: 20px;
+    height: 20px;
+
+    background-image: url('./images/eye-close.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &.open {
+      background-image: url('./images/eye-open.png');
+    }
+
+    .noEdit & {
+      display: none;
+    }
+  }
+}
+
+.textValue {
+  cursor: default;
+
+  display: none;
+
+  margin: 16.7px 10px;
+
+  font-size: 0.9em;
+  font-weight: normal;
+
+  .noEdit & {
+    display: block;
+    word-break: break-word;
+  }
+}
+
+.formInput {
+  margin-top: 3px;
+  margin-bottom: 6px;
+  font-size: 0.9em;
+
+  &::placeholder {
+    font-size: 0.8em;
+    letter-spacing: initial;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    background-color: var(--input-disabled-color);
+  }
+
+  &[type='password'] {
+    letter-spacing: 2px;
+  }
+
+  &[name='login-password'] {
+    padding-right: 36px;
+  }
+
+  .noEdit & {
+    display: none;
+  }
+
+  .mismatchPassword &,
+  .apiError &,
+  .selfError &:invalid,
+  .error &:invalid,
+  .error .formLabel[area-invalid='true'] & {
+    border: 2px solid var(--input-error-border-color);
+    animation: invalid-input 0.4s 1;
+    animation-fill-mode: backwards;
+  }
+}
+
+.formErrorText {
+  cursor: default;
+
+  display: block;
+
+  height: 20px;
+
+  font-size: 0.65em;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-error-color);
+
+  visibility: hidden;
+
+  .noEdit & {
+    display: none;
+  }
+
+  .mismatchPassword &,
+  .apiError &,
+  .error .formLabel[area-invalid='true'] &,
+  .error .formInput:invalid + &,
+  .selfError .formInput:invalid + & {
+    visibility: visible;
+  }
+}
+
+.noEdit {
+  select {
+    pointer-events: none;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  input[type='checkbox'] {
+    pointer-events: none;
+    filter: grayscale(1);
+  }
+
+  button {
+    pointer-events: none;
+    color: var(--disabled-text-color);
+    background-color: var(--disabled-background-color) !important;
+  }
+}
+
+@keyframes invalid-input {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(2px);
+  }
+
+  40% {
+    transform: translateX(-2px);
+  }
+
+  60% {
+    transform: translateX(2px);
+  }
+
+  80% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

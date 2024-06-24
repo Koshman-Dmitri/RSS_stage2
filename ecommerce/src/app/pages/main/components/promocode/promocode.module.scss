@@ -1,0 +1,105 @@
+@import '/src/styles/global';
+
+.promocode {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 10px 20px;
+
+  background-color: rgba($color: black, $alpha: 70%);
+  border-radius: 10px;
+
+  &:first-of-type {
+    margin-top: 100px;
+  }
+
+  @media (width <= $medium-width) {
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: center;
+  }
+}
+
+.promoText {
+  padding: 10px;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--background-color);
+  text-align: left;
+
+  @media (width <= $medium-width) {
+    width: 100%;
+    padding: 4px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+.promoWrapper {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 240px;
+  padding: 10px 20px;
+
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  background: linear-gradient(90deg, rgb(255 255 255 / 100%) 40%, rgb(219 219 219 / 40%) 100%);
+  border-radius: 10px;
+  box-shadow: 0 0 6px var(--promo-border-color);
+
+  @media (width <= $medium-width) {
+    max-width: 200px;
+    margin-top: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+.title {
+  cursor: default;
+  z-index: 6;
+  max-width: 50%;
+  text-align: left;
+}
+
+.promoValue {
+  color: var(--promo-border-color);
+}
+
+.code {
+  cursor: pointer;
+  z-index: 4;
+}
+
+.cover {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: -50%;
+  transform: skewX(-35deg);
+
+  width: 150%;
+  height: 100%;
+
+  background-color: var(--promo-cover-color);
+  box-shadow: 0 0 8px var(--base-color);
+
+  transition: left 0.3s ease-in-out;
+
+  .promoWrapper:hover & {
+    left: -100%;
+  }
+}

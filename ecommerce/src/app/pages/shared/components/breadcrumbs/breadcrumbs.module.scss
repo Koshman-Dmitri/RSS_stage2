@@ -1,0 +1,30 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: -40px;
+  padding: 10px;
+
+  font-size: 0.9em;
+
+  background-color: var(--secondary-background-color);
+
+  .breadcrumbLink {
+    font-weight: bold;
+    text-align: center;
+
+    &.active {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover:not(.active) {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+:root {
+  /* Common */
+  --base-color: black;
+  --secondary-color: silver;
+  --background-color: white;
+  --secondary-background-color: oldlace;
+  --disabled-background-color: rgb(200 200 200);
+  --disabled-text-color: grey;
+
+  /* Login-Registration forms */
+  --input-border-color: grey;
+  --input-focus-border-color: black;
+  --input-error-border-color: crimson;
+  --input-disabled-color: rgb(128 128 128 / 25%);
+  --text-error-color: crimson;
+  --button-text-color: white;
+  --form-link-color: green;
+  --form-link-color-hover: crimson;
+  --form-checkbox-color: green;
+  --label-checkbox-inactive-color: grey;
+  --label-checkbox-active-color: black;
+
+  /* Profile */
+  --row-default-color: oldlace;
+  --button-remove-color: crimson;
+  --button-do-color: lightseagreen;
+
+  /* Product */
+  --product-card-description-color: grey;
+  --discount-label-color: crimson;
+  --add-to-card-background-color: lightseagreen;
+
+  /* Cart item */
+  --promo-price-color: green;
+  --no-promo-price-color: grey;
+  --confirm-button-color: lightseagreen;
+  --reject-button-color: crimson;
+
+  /* Promocode */
+  --promo-border-color: lightseagreen;
+  --promo-cover-color: lightgrey;
+  --active-promo-bg-color: lightgreen;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('/Poppins-Regular.ttf');
+}
+
+html {
+  height: 100%;
+  font-size: 20px;
+}
+
+body {
+  height: 100%;
+  font-style: normal;
+  color: var(--base-color);
+}

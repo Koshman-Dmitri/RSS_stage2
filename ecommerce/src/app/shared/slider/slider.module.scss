@@ -1,0 +1,54 @@
+.sliderBullet {
+  opacity: 1;
+  background-color: var(--secondary-background-color);
+}
+
+.sliderButtonPrev,
+.sliderButtonNext {
+  top: 22px;
+
+  height: 100%;
+  padding: 4%;
+
+  color: var(--secondary-background-color);
+
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+
+  &::after {
+    filter: drop-shadow(0 0 3px var(--base-color));
+  }
+
+  &.navigationDisabled {
+    pointer-events: initial;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(.navigationDisabled) {
+      background-color: rgb(255 255 255 / 50%);
+    }
+  }
+}
+
+.sliderButtonPrev {
+  left: 0;
+}
+
+.sliderButtonNext {
+  right: 0;
+}
+
+.pagination > * {
+  width: 13px;
+  height: 13px;
+  filter: drop-shadow(0 0 3px var(--base-color));
+
+  &:not(.sliderBullet) {
+    opacity: 0.4;
+  }
+}
+
+.slide {
+  height: auto;
+}
